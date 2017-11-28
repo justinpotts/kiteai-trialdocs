@@ -1,5 +1,13 @@
 # Kite AI Trial Documentation
 
+## Table of Contents
+
+* [Introduction](#introduction)
+* [Quick Start](#quick-start)
+* [Documentation](#documentation)
+* [Custom Models](#custom-models)
+* [Future](#future)
+
 ## Introduction
 
 Welcome to Kite AI's trial documentation. Here, you'll find everything you need to know, from setting up your environment, to analyzing results. Have any questions? Feel free to reach out to us at any time.
@@ -138,3 +146,57 @@ is_abusive: False
 ```
 
 To learn more about the API endpoints and methods you can use, check out the documentation below. For support or questions, email one of our team members and we'll get in touch!
+
+## Documentation
+
+### /predict `POST`
+
+`predict` analyzes a string and returns whether or not there's a presence of abuse.
+
+#### Request
+
+##### Headers
+
+```
+"Content-Type": "application/json",
+"x-api-key`: "insert_api_key"
+```
+
+##### Body
+
+```
+{
+  "phrase":"STRING"
+}
+```
+
+#### Response
+
+##### Success
+
+```
+{
+  "is_abusive": BOOLEAN,
+  "phrase": "STRING",
+  "success": true
+}
+```
+
+##### Error
+
+```
+{
+  "success": false,
+  "error": "STRING"
+}
+```
+
+## Custom Models
+
+If you're unsatisfied with the performance of our base model, we'd be happy to discuss building a custom model tailored towards your data.
+
+The base model is trained off comments from YouTube, Reddit, and Twitter. If your app targets a different, unique, audience, or is shorter or longer on average in length than these sources, we can tailor a solution that works for you!
+
+## Future
+
+We're working on developing some exciting new features. Over the coming months, we'll be adding more features and endpoints to our API, including probabilities (67% likely to be abusive), frequency (Very high, high, low, very low), and topic modeling (racism, sexism, political discrimination, religious discrimination, LGBTQ discrimination).
