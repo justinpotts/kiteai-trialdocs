@@ -28,7 +28,7 @@ The benefit of Kite AI is that it's as easy to set up as it is to use. Using a l
 
 Import these into the file.
 
-```
+```python
 # trial.py
 
 import requests
@@ -41,7 +41,7 @@ You'll need an key to use the API, which should have been emailed to you. If you
 
 Once you have the API key, add it as a variable to make it easy to identify or change later on.
 
-```
+```python
 api_key = 'insert_api_key'
 ```
 
@@ -49,7 +49,7 @@ Since we're just starting with the API, let's make it something we can play arou
 
 Additionally, we should make a dictionary including the phrase, in case we need to add more elements later on.
 
-```
+```python
 phrase = raw_input('Enter a phrase: ')
 
 data = {
@@ -61,7 +61,7 @@ data = {
 
 Now it's time to set the headers, where we include information like the `Content-Type` and API key. We'll make this a dictionary to so it's easy to digest.
 
-```
+```python
 headers = {
   'Content-Type': 'application/json',
   'x-api-key': 'insert_api_key'
@@ -72,8 +72,8 @@ headers = {
 
 Now, we're ready to make a request. Create a variable called `response`, and add the required data and headers.
 
-```
-response = requests.post('https://api.kiteai.com/predict', data=json.loads(data), headers=headers)
+```python
+response = requests.post('https://api.kiteai.com/predict', data=json.dumps(data), headers=headers)
 ```
 
 ### Analyzing the results
@@ -90,7 +90,7 @@ We've made the request, now we can view the results. Making a `POST` request to 
 
 It's return in `JSON`, so to access the elements we can call `response.json()` which will return the `is_abusive` value containing `true` or `false`.
 
-```
+```python
 is_abusive = response.json()['is_abusive']
 ```
 
@@ -110,7 +110,7 @@ In less than 20 lines of code, we've built a program using Python that takes use
 
 Your code should look like this:
 
-```
+```python
 # trial.py
 
 import requests
@@ -129,16 +129,16 @@ headers = {
   'x-api-key': 'insert_api_key'
 }
 
-response = requests.post('https://api.kiteai.com/predict', data=json.loads(data), headers=headers)
+response = requests.post('https://api.kiteai.com/predict', data=json.dumps(data), headers=headers)
 
 is_abusive = response.json()['is_abusive']
 
-print 'Phrase: ' + phrase + '\n' + 'is_abusive: ' + str(is_abusive)'
+print 'Phrase: ' + phrase + '\n' + 'is_abusive: ' + str(is_abusive)
 ```
 
 Running `trial.py` will look something like this:
 
-```
+```python
 $ python trial.py
 Enter a phrase: Hey, this is pretty cool!
 Phrase: Hey, this is pretty cool!
